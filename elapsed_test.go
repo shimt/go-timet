@@ -11,6 +11,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func newTime(s string) time.Time {
+	t, err := time.Parse(time.RFC3339, s)
+	if err != nil {
+		panic(err)
+	}
+
+	return t
+}
+
 func TestElapsedTime_Start(t *testing.T) {
 	et := &ElapsedTime{}
 
@@ -37,9 +46,72 @@ func TestElapsedTime_Time(t *testing.T) {
 }
 
 func TestElapsedTime_Elapsed(t *testing.T) {
-	et := &ElapsedTime{}
-	et.Start()
-	et.Stop()
+	t.Run("start-top", func(t *testing.T) {
+		et := ElapsedTime{}
+		et.Start()
+		et.Stop()
+		assert.Equal(t, et.et.Sub(et.st), et.Elapsed())
+	})
 
-	assert.Equal(t, et.et.Sub(et.st), et.Elapsed())
+	t.Run("start-only", func(t *testing.T) {
+		et := ElapsedTime{}
+		et.Start()
+		assert.InEpsilon(t, time.Until(et.st), et.Elapsed(), float64(1*time.Millisecond))
+	})
+
+	type fields struct {
+		st time.Time
+		et time.Time
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   time.Duration
+	}{
+		{"<empty>", fields{}, 0 * time.Second},
+		{"1s", fields{
+			st: newTime("2021-08-27T23:23:23+09:00"),
+			et: newTime("2021-08-27T23:23:24+09:00"),
+		}, 1 * time.Second},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := &ElapsedTime{
+				st: tt.fields.st,
+				et: tt.fields.et,
+			}
+			if got := s.Elapsed(); got != tt.want {
+				t.Errorf("ElapsedTime.Elapsed() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestElapsedTime_String(t *testing.T) {
+	type fields struct {
+		st time.Time
+		et time.Time
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   string
+	}{
+		{"<empty>", fields{}, "0s"},
+		{"1s", fields{
+			st: newTime("2021-08-27T23:23:23+09:00"),
+			et: newTime("2021-08-27T23:23:24+09:00"),
+		}, "1s"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := &ElapsedTime{
+				st: tt.fields.st,
+				et: tt.fields.et,
+			}
+			if got := s.String(); got != tt.want {
+				t.Errorf("ElapsedTime.String() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

@@ -29,6 +29,10 @@ func (s *ElapsedTime) Time() (time.Time, time.Time) {
 
 // Elapsed returns elapsed time.
 func (s *ElapsedTime) Elapsed() time.Duration {
+	if s.st.Equal(s.et) {
+		return time.Duration(0)
+	}
+
 	if s.et.After(time.Time{}) {
 		return s.et.Sub(s.st)
 	}
