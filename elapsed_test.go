@@ -24,14 +24,14 @@ func TestElapsedTime_Start(t *testing.T) {
 	et := &ElapsedTime{}
 
 	et.Start()
-	assert.InDelta(t, time.Until(et.st), 0, float64(1*time.Millisecond))
+	assert.InDelta(t, time.Until(et.st), 0, float64(MS(1)))
 }
 
 func TestElapsedTime_Stop(t *testing.T) {
 	et := &ElapsedTime{}
 
 	et.Stop()
-	assert.InDelta(t, time.Until(et.et), 0, float64(1*time.Millisecond))
+	assert.InDelta(t, time.Until(et.et), 0, float64(MS(1)))
 }
 
 func TestElapsedTime_Time(t *testing.T) {
@@ -56,7 +56,7 @@ func TestElapsedTime_Elapsed(t *testing.T) {
 	t.Run("start-only", func(t *testing.T) {
 		et := ElapsedTime{}
 		et.Start()
-		assert.InEpsilon(t, time.Until(et.st), et.Elapsed(), float64(1*time.Millisecond))
+		assert.InEpsilon(t, time.Until(et.st), et.Elapsed(), float64(MS(1)))
 	})
 
 	type fields struct {
@@ -68,7 +68,7 @@ func TestElapsedTime_Elapsed(t *testing.T) {
 		fields fields
 		want   time.Duration
 	}{
-		{"<empty>", fields{}, 0 * time.Second},
+		{"<empty>", fields{}, S(0)},
 		{"1s", fields{
 			st: newTime("2021-08-27T23:23:23+09:00"),
 			et: newTime("2021-08-27T23:23:24+09:00"),
