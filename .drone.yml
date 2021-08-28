@@ -13,3 +13,8 @@ steps:
     image: golangci/golangci-lint
     commands:
       - golangci-lint run
+
+  - name: build
+    image: golang:1.16
+    commands:
+      - go build -v ./...
