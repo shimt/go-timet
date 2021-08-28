@@ -5,9 +5,19 @@
 package timet
 
 import (
+	"fmt"
 	"testing"
 	"time"
 )
+
+func ExampleNS() {
+	d := NS(1)
+	fmt.Println(d)
+	fmt.Println(d == 1*time.Nanosecond)
+	// Output:
+	// 1ns
+	// true
+}
 
 func TestNS(t *testing.T) {
 	type args struct {
@@ -30,6 +40,15 @@ func TestNS(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleUS() {
+	d := US(1)
+	fmt.Println(d)
+	fmt.Println(d == 1*time.Microsecond)
+	// Output:
+	// 1µs
+	// true
 }
 
 func TestUS(t *testing.T) {
@@ -55,6 +74,15 @@ func TestUS(t *testing.T) {
 	}
 }
 
+func ExampleMS() {
+	d := MS(1)
+	fmt.Println(d)
+	fmt.Println(d == 1*time.Millisecond)
+	// Output:
+	// 1ms
+	// true
+}
+
 func TestMS(t *testing.T) {
 	type args struct {
 		n int64
@@ -76,6 +104,15 @@ func TestMS(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleS() {
+	d := S(1)
+	fmt.Println(d)
+	fmt.Println(d == 1*time.Second)
+	// Output:
+	// 1s
+	// true
 }
 
 func TestS(t *testing.T) {
@@ -101,6 +138,15 @@ func TestS(t *testing.T) {
 	}
 }
 
+func ExampleM() {
+	d := M(1)
+	fmt.Println(d)
+	fmt.Println(d == 1*time.Minute)
+	// Output:
+	// 1m0s
+	// true
+}
+
 func TestM(t *testing.T) {
 	type args struct {
 		n int64
@@ -122,6 +168,15 @@ func TestM(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleH() {
+	d := H(1)
+	fmt.Println(d)
+	fmt.Println(d == 1*time.Hour)
+	// Output:
+	// 1h0m0s
+	// true
 }
 
 func TestH(t *testing.T) {
