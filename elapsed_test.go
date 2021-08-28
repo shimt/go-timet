@@ -56,7 +56,7 @@ func TestElapsedTime_Elapsed(t *testing.T) {
 	t.Run("start-only", func(t *testing.T) {
 		et := ElapsedTime{}
 		et.Start()
-		assert.InEpsilon(t, time.Until(et.st), et.Elapsed(), float64(MS(1)))
+		assert.InDelta(t, time.Until(et.st), et.Elapsed(), float64(MS(1)))
 	})
 
 	type fields struct {
