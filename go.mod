@@ -1,4 +1,4 @@
-module timet
+module github.com/shimt/timet
 
 go 1.16
 
