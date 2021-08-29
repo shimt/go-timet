@@ -1,4 +1,4 @@
-module github.com/shimt/timet
+module github.com/shimt/go-timet
 
 go 1.16
 
