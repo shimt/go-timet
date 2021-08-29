@@ -6,21 +6,21 @@ package timet
 
 import "time"
 
-// NS returns n nano second duration.
+// NS returns n nanosecond duration.
 //
 // This is the same as "n * time.Nanosecond".
 func NS(n int64) time.Duration {
 	return time.Duration(n) * time.Nanosecond
 }
 
-// US returns n micro second duration.
+// US returns n microsecond duration.
 //
 // This is the same as "n * time.Microsecond".
 func US(n int64) time.Duration {
 	return time.Duration(n) * time.Microsecond
 }
 
-// MS returns n milli second duration.
+// MS returns n millisecond duration.
 //
 // This is the same as "n * time.Millisecond".
 func MS(n int64) time.Duration {
