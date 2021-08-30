@@ -30,7 +30,7 @@ jobs:
         go-version: ${{ matrix.go }}
 
     - name: Test
-      run: go test -v -race -parallel 4 ./...
+      run: go test -v -race -coverprofile="coverage.txt" -parallel 4 ./...
 
     - name: Lint
       uses: golangci/golangci-lint-action@v2
@@ -38,3 +38,7 @@ jobs:
     - name: Build
       run: go build -v ./...
 
+    - name: Send coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
