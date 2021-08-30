@@ -1,4 +1,6 @@
 # go-timet
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet?ref=badge_shield)
+
 
 go-timet is time package template collection.
 
@@ -30,3 +32,7 @@ A set of functions for creating units of duration.
 | second (s)       | S(n)     | n \* time.Second      |
 | minute (m)       | M(n)     | n \* time.Minute      |
 | hour (h)         | H(n)     | n \* time.Hour        |
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet?ref=badge_large)
