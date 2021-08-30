@@ -27,7 +27,7 @@ A set of functions for creating units of duration.
 | unit             | function | equal to              |
 | ---------------- | -------- | --------------------- |
 | nanosecond (ns)  | NS(n)    | n \* time.Nanosecond  |
-| microsecond (μs) | US(n)    | n \* time.Microsecond |
+| microsecond (μs) | US(n)    | n \* time.Microsecond |
 | millisecond (ms) | MS(n)    | n \* time.Millisecond |
 | second (s)       | S(n)     | n \* time.Second      |
 | minute (m)       | M(n)     | n \* time.Minute      |
