@@ -1,5 +1,7 @@
 # go-timet
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/shimt/go-timet.svg)](https://pkg.go.dev/github.com/shimt/go-timet) [![GitHub Actions](https://github.com/shimt/go-timet/actions/workflows/main.yml/badge.svg)](https://github.com/shimt/go-timet/actions/workflows/main.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/shimt/go-timet)](https://goreportcard.com/report/github.com/shimt/go-timet) [![codecov](https://codecov.io/gh/shimt/go-timet/branch/master/graph/badge.svg?token=W60LVKYO9B)](https://codecov.io/gh/shimt/go-timet)
+
 go-timet is time package template collection.
 
 - I've coded many times.
