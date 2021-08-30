@@ -21,7 +21,7 @@ func (s *ElapsedTime) Start() {
 	s.start = time.Now()
 }
 
-// Start ends measure.
+// Stop ends measure.
 func (s *ElapsedTime) Stop() {
 	s.stop = time.Now()
 }
