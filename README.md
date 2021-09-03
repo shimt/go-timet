@@ -1,4 +1,6 @@
 # go-timet
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet?ref=badge_shield)
+
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/shimt/go-timet.svg)](https://pkg.go.dev/github.com/shimt/go-timet) [![GitHub Actions](https://github.com/shimt/go-timet/actions/workflows/main.yml/badge.svg)](https://github.com/shimt/go-timet/actions/workflows/main.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/shimt/go-timet)](https://goreportcard.com/report/github.com/shimt/go-timet) [![codecov](https://codecov.io/gh/shimt/go-timet/branch/master/graph/badge.svg?token=W60LVKYO9B)](https://codecov.io/gh/shimt/go-timet)
 
@@ -32,3 +34,7 @@ A set of functions for creating units of duration.
 | second (s)       | S(n)     | n \* time.Second      |
 | minute (m)       | M(n)     | n \* time.Minute      |
 | hour (h)         | H(n)     | n \* time.Hour        |
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fshimt%2Fgo-timet?ref=badge_large)
