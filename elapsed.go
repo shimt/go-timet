@@ -57,10 +57,10 @@ var _ json.Unmarshaler = &ElapsedTime{}
 func (s *ElapsedTime) MarshalJSON() ([]byte, error) {
 	m := make(map[string]interface{}, 2)
 	if s.Begin.After(time.Time{}) {
-		m["start"] = s.Begin.Format(time.RFC3339Nano)
+		m["begin"] = s.Begin.Format(time.RFC3339Nano)
 	}
 	if s.End.After(time.Time{}) {
-		m["stop"] = s.End.Format(time.RFC3339Nano)
+		m["end"] = s.End.Format(time.RFC3339Nano)
 	}
 	return json.Marshal(m)
 }
@@ -72,18 +72,18 @@ func (s *ElapsedTime) UnmarshalJSON(b []byte) error {
 		return err
 	}
 
-	if v, ok := m["start"]; ok {
+	if v, ok := m["begin"]; ok {
 		t, err := time.Parse(time.RFC3339Nano, v)
 		if err != nil {
-			return fmt.Errorf("start: %w", err)
+			return fmt.Errorf("begin: %w", err)
 		}
 		s.Begin = t
 	}
 
-	if v, ok := m["stop"]; ok {
+	if v, ok := m["end"]; ok {
 		t, err := time.Parse(time.RFC3339Nano, v)
 		if err != nil {
-			return fmt.Errorf("stop: %w", err)
+			return fmt.Errorf("end: %w", err)
 		}
 		s.End = t
 	}
