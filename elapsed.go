@@ -12,35 +12,35 @@ import (
 
 // ElapsedTime represents an active elapsed time  instance.
 type ElapsedTime struct {
-	start time.Time
-	stop  time.Time
+	Begin time.Time
+	End   time.Time
 }
 
 // Start starts measure.
 func (s *ElapsedTime) Start() {
-	s.start = time.Now()
+	s.Begin = time.Now()
 }
 
 // Stop ends measure.
 func (s *ElapsedTime) Stop() {
-	s.stop = time.Now()
+	s.End = time.Now()
 }
 
 // Time returns start time and end time.
 func (s *ElapsedTime) Time() (time.Time, time.Time) {
-	return s.start, s.stop
+	return s.Begin, s.End
 }
 
 // Elapsed returns elapsed time.
 func (s *ElapsedTime) Elapsed() time.Duration {
-	if s.start.Equal(s.stop) {
+	if s.Begin.Equal(s.End) {
 		return time.Duration(0)
 	}
 
-	if s.stop.After(time.Time{}) {
-		return s.stop.Sub(s.start)
+	if s.End.After(time.Time{}) {
+		return s.End.Sub(s.Begin)
 	}
-	return time.Until(s.start)
+	return time.Until(s.Begin)
 }
 
 // String returns a string representing the elapsed time.
@@ -56,11 +56,11 @@ var _ json.Unmarshaler = &ElapsedTime{}
 // MarshalJSON implements the json.Marshaler interface.
 func (s *ElapsedTime) MarshalJSON() ([]byte, error) {
 	m := make(map[string]interface{}, 2)
-	if s.start.After(time.Time{}) {
-		m["start"] = s.start.Format(time.RFC3339Nano)
+	if s.Begin.After(time.Time{}) {
+		m["start"] = s.Begin.Format(time.RFC3339Nano)
 	}
-	if s.stop.After(time.Time{}) {
-		m["stop"] = s.stop.Format(time.RFC3339Nano)
+	if s.End.After(time.Time{}) {
+		m["stop"] = s.End.Format(time.RFC3339Nano)
 	}
 	return json.Marshal(m)
 }
@@ -77,7 +77,7 @@ func (s *ElapsedTime) UnmarshalJSON(b []byte) error {
 		if err != nil {
 			return fmt.Errorf("start: %w", err)
 		}
-		s.start = t
+		s.Begin = t
 	}
 
 	if v, ok := m["stop"]; ok {
@@ -85,7 +85,7 @@ func (s *ElapsedTime) UnmarshalJSON(b []byte) error {
 		if err != nil {
 			return fmt.Errorf("stop: %w", err)
 		}
-		s.stop = t
+		s.End = t
 	}
 
 	return nil
